@@ -1,0 +1,19 @@
+# LOC-LOC v2.2.0 - dependencies (checked working as of June 2026)
+# Recommended Python: 3.13 (3.13.x). Also works on 3.11–3.14.
+#   On Windows + Python 3.14, PyTorch only ships CPU wheels (no CUDA yet),
+#   so if you want GPU acceleration on Windows, stay on Python 3.13.
+# Install:  py -m pip install -r requirements.txt
+#   (the YOLO .pt weights auto-download on first run if missing.)
+
+# --- Dashboard ---
+streamlit>=1.58                       # now runs on Starlette/Uvicorn (faster than the old Tornado)
+plotly>=6.0
+streamlit-autorefresh>=1.0.1
+streamlit-drawable-canvas-fix>=0.9.8  # maintained fork; the original is archived. Handles
+                                      # image_to_url natively on modern Streamlit (no shim needed).
+Pillow>=11.0
+
+# --- Vision / camera worker ---
+ultralytics>=8.3.0                    # provides YOLO11 + YOLO26 models and tracking
+opencv-python>=4.10
+numpy>=1.26

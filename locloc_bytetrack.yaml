@@ -1,0 +1,22 @@
+# LOC-LOC tracker settings (tuned ByteTrack)
+# camera_worker.py uses this automatically if this file exists.
+#
+# Main change from the default bytetrack.yaml is track_buffer.
+# Default is 30 frames (around 4 sec at our 8 fps). In the library people
+# get blocked by other people and shelves all the time. 64 frames (around
+# 8 sec) means a person that gets hidden and shows up again is matched to
+# their SAME id again, so the count does not dip down then back up, and
+# they are not counted twice.
+#
+# track_high_thresh / new_track_thresh: a NEW track needs a confident
+# detection (0.55) to be created, but an EXISTING track can survive on
+# weaker detections (0.1). That is what keeps a moving or half hidden
+# person attached to their id.
+
+tracker_type: bytetrack
+track_high_thresh: 0.45
+track_low_thresh: 0.1
+new_track_thresh: 0.55
+track_buffer: 64
+match_thresh: 0.8
+fuse_score: True

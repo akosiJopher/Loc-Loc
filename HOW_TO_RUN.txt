@@ -1,0 +1,28 @@
+LOC-LOC v2.2.0 - How to Run (fresh PC)
+=======================================
+1) Install Python 3.13 (check "Add python.exe to PATH" during install).
+   Note: on Windows, Python 3.14 has no GPU pytorch yet so stay on 3.13
+   if you want GPU.
+2) Open this folder, click the address bar, type cmd then Enter.
+3) py -m pip install -r requirements.txt
+4) Set up the credentials (one time only):
+     copy .streamlit\secrets.toml.example .streamlit\secrets.toml
+     then edit secrets.toml and put the camera IP and password there.
+     (the worker will not start on the demo password unless you set
+      LOCLOC_ALLOW_DEV_FALLBACK=1, this is on purpose for security)
+5) EASIEST: just double click run.bat (starts the worker + dashboard).
+   Or manually:
+     py -m streamlit run app.py --server.address 0.0.0.0   (dashboard)
+     py camera_worker.py                                   (camera, 2nd window)
+
+Notes
+- The dashboard works even WITHOUT the camera (it uses simulated data).
+- The yolo model auto downloads on first run if missing (needs internet).
+  You can change model_path in secrets.toml, yolo26n.pt is the fastest.
+- Phones on the same wifi: open the "Network URL" that streamlit prints,
+  or scan the QR.
+- v2.2.0 counts people by TRACKING (each person keeps an ID) so the
+  number stays steady when people move. You can tune confirm_frames and
+  grace_frames in secrets.toml.
+- More details and the security checklist: see README_DEPLOY.md
+- Change the admin password in [admin] of secrets.toml before deploying.
