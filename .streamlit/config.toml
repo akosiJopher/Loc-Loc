@@ -1,0 +1,21 @@
+[theme]
+base = "light"
+primaryColor = "#ef4444"
+
+[server]
+enableStaticServing = true
+# Cap uploads (the app never needs big files); reduces abuse surface on LAN.
+maxUploadSize = 10
+# For LAN access (phones on the same Wi-Fi), run with:
+#   py -m streamlit run app.py --server.address 0.0.0.0
+headless = true
+
+[browser]
+gatherUsageStats = false
+
+[runner]
+fastReruns = true
+
+[client]
+# Hide the Streamlit hamburger/deploy chrome on the public kiosk view.
+toolbarMode = "minimal"
